@@ -1,64 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const focusableElements = Array.from(document.querySelectorAll('.download-card, .btn-download, a[href]'));
-  let currentIndex = 0;
+  const cards = Array.from(document.querySelectorAll('.card'));
+  let index = 0;
 
-  // Set initial focus to first download card for TV remote compatibility
-  if (focusableElements.length > 0) {
-    focusableElements[0].classList.add('focused');
+  function focusCard(i) {
+    if (i < 0 || i >= cards.length) return;
+    cards.forEach(c => c.blur());
+    index = i;
+    cards[index].focus();
   }
 
-  function setFocus(index) {
-    if (index < 0 || index >= focusableElements.length) return;
-    
-    focusableElements.forEach(el => el.classList.remove('focused'));
-    currentIndex = index;
-    const currentEl = focusableElements[currentIndex];
-    
-    currentEl.classList.add('focused');
-    currentEl.focus();
-    currentEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-
-  // D-Pad Remote Controller & Keyboard Navigation Listener
   window.addEventListener('keydown', (e) => {
-    const isTVOrKeyboard = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Enter', ' '].includes(e.key);
-    
-    if (isTVOrKeyboard) {
-      document.body.classList.add('tv-nav-active');
-    }
-
     switch (e.key) {
       case 'ArrowRight':
       case 'ArrowDown':
         e.preventDefault();
-        setFocus((currentIndex + 1) % focusableElements.length);
+        focusCard((index + 1) % cards.length);
         break;
-
       case 'ArrowLeft':
       case 'ArrowUp':
         e.preventDefault();
-        setFocus((currentIndex - 1 + focusableElements.length) % focusableElements.length);
+        focusCard((index - 1 + cards.length) % cards.length);
         break;
-
       case 'Enter':
       case ' ':
-        e.preventDefault();
-        if (focusableElements[currentIndex]) {
-          const downloadBtn = focusableElements[currentIndex].querySelector('.btn-download') || focusableElements[currentIndex];
-          if (downloadBtn && downloadBtn.href) {
-            window.location.href = downloadBtn.href;
-          } else {
-            focusableElements[currentIndex].click();
-          }
+        if (document.activeElement && document.activeElement.classList.contains('card')) {
+          e.preventDefault();
+          const btn = document.activeElement.querySelector('.btn');
+          if (btn) btn.click();
         }
         break;
     }
-  });
-
-  // Hover sync for mouse users
-  focusableElements.forEach((el, idx) => {
-    el.addEventListener('mouseenter', () => {
-      setFocus(idx);
-    });
   });
 });

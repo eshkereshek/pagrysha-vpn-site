@@ -1,27 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
-  <defs>
-    <radialGradient id="pearGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.15" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-    </radialGradient>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="8" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-    </filter>
-  </defs>
-
-  <!-- Subtle glow backdrop -->
-  <circle cx="256" cy="270" r="180" fill="url(#pearGlow)" />
-
-  <g transform="translate(0, 10)">
-    <!-- Stem & Leaf -->
-    <path fill="#ffffff" opacity="0.9" d="M256,70 C256,70 270,110 252,145 C250,149 256,150 258,146 C275,115 264,72 264,72 Z"/>
-    <path fill="#ffffff" opacity="0.95" d="M258,115 C285,95 325,100 330,125 C310,135 275,130 258,115 Z"/>
-
-    <!-- Minimalist Pear Body -->
-    <path fill="#ffffff" filter="url(#glow)" d="M256,150 C215,150 195,190 185,225 C170,270 140,305 140,360 C140,430 190,470 256,470 C322,470 372,430 372,360 C372,305 342,270 327,225 C317,190 297,150 256,150 Z" />
-
-    <!-- Sleek OLED Inner Curve Cutout for Premium Minimalist Effect -->
-    <path fill="#000000" opacity="0.15" d="M270,165 C295,185 308,215 316,245 C328,285 352,315 352,360 C352,415 315,450 265,455 C315,448 340,412 340,360 C340,312 315,280 302,240 C294,210 282,185 270,165 Z" />
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="100%" height="100%">
+  <!-- Stem & Leaf -->
+  <path fill="#ffffff" d="M128 32 C128 32 138 56 125 78 C124 80 128 81 129 78 C140 58 133 33 133 33 Z"/>
+  <path fill="#ffffff" d="M129 60 C146 47 172 50 175 66 C162 72 140 69 129 60 Z"/>
+  <!-- Minimalist Pear Body -->
+  <path fill="#ffffff" d="M128 80 C102 80 89 105 83 128 C74 157 55 179 55 214 C55 244 87 256 128 256 C169 256 201 244 201 214 C201 179 182 157 173 128 C167 105 154 80 128 80 Z"/>
 </svg>
