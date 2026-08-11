@@ -469,6 +469,35 @@ body {
   line-height: 1.5;
 }
 
+/* Platform Features Headers */
+.platform-features-group {
+  margin-bottom: 24px;
+}
+
+.platform-header {
+  margin-bottom: 20px;
+}
+
+.platform-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.platform-title {
+  font-family: var(--font-title);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
 /* Footer */
 .footer {
   padding: 40px 0;
